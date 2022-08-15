@@ -54,6 +54,11 @@ env:
   GAR_LOCATION: europe-west1
   SERVICE: afridi-dev-functions
   REGION: europe-west1
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: '${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}'
+  NEXT_PUBLIC_SUPABASE_URL: '${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}'
+  NEXT_PUBLIC_IMAGE_CDN_PATH: '${{ secrets.NEXT_PUBLIC_IMAGE_CDN_PATH }}'
+  BUCKET_URL: '${{ secrets.BUCKET_URL }}'
+  BUCKET_KEY: '${{ secrets.BUCKET_KEY }}'
 
 jobs:
   deploy:
