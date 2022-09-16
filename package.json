@@ -79,7 +79,7 @@
     "testEnvironment": "node"
   },
   "engines": {
-    "node": "16"
+    "node": "18"
   },
   "main": "dist/main.js"
 }
