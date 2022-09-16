@@ -30,6 +30,7 @@
     "formidable": "^2.0.1",
     "nanoid": "^3.3.4",
     "node-libcurl": "^2.3.4",
+    "plaiceholder": "^2.5.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
