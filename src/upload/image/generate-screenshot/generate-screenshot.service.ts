@@ -8,7 +8,11 @@ export class GenerateScreenshotService {
   getService = async (req: Request) => {
     const { html, styles } = req.body;
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox"],
+      ignoreDefaultArgs: ["--disable-extensions"],
+    });
 
     const page = await browser.newPage();
     page.setViewport({ width: 1200, height: 600, deviceScaleFactor: 2 });
