@@ -8,6 +8,7 @@ import { PasteModule } from "./upload/image/paste/paste/paste.module";
 import { UploadVideoModule } from "./upload/video/upload-video/upload-video.module";
 import { DeleteVideoModule } from "./upload/video/delete-video/delete-video.module";
 import { GeneratePlaceholderModule } from "./upload/image/generate-placeholder/generate-placeholder.module";
+import { GenerateScreenshotModule } from "./upload/image/generate-screenshot/generate-screenshot.module";
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { GeneratePlaceholderModule } from "./upload/image/generate-placeholder/g
     UploadVideoModule,
     DeleteVideoModule,
     GeneratePlaceholderModule,
+    GenerateScreenshotModule,
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
