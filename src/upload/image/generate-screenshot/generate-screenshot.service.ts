@@ -17,7 +17,7 @@ export class GenerateScreenshotService {
     const page = await browser.newPage();
     page.setViewport({ width: 1200, height: 600, deviceScaleFactor: 2 });
     const loaded = page.waitForNavigation({
-      waitUntil: "load",
+      waitUntil: "networkidle0",
     });
     await page.setContent(
       `<!DOCTYPE html>
@@ -41,6 +41,8 @@ export class GenerateScreenshotService {
 
     const screenShotBuffer = await page.screenshot({
       fullPage: true,
+      type: "webp",
+      quality: 75,
     });
 
     await browser.close();
