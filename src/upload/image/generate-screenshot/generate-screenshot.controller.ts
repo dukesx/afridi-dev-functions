@@ -8,7 +8,7 @@ export class GenerateScreenshotController {
     private readonly getScreenshotService: GenerateScreenshotService
   ) {}
   @Post()
-  async generateScreenshot(@Req() req: Request) {
-    return this.getScreenshotService.getService(req);
+  async generateScreenshot(@Req() req: Request, @Res() res: Response) {
+    return this.getScreenshotService.getService(req, res);
   }
 }
