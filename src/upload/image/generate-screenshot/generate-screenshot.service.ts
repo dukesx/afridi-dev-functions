@@ -16,8 +16,10 @@ export class GenerateScreenshotService {
 
     const page = await browser.newPage();
     page.setViewport({ width: 1200, height: 600, deviceScaleFactor: 2 });
-
-    page.setContent(
+    const loaded = page.waitForNavigation({
+      waitUntil: "load",
+    });
+    await page.setContent(
       `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -35,7 +37,14 @@ export class GenerateScreenshotService {
     `
     );
 
-    const screenShotBuffer = await page.screenshot();
+    await loaded;
+
+    const screenShotBuffer = await page.screenshot({
+      fullPage: true,
+    });
+
+    await browser.close();
+
     if (screenShotBuffer) {
       return JSON.stringify({
         buffer: screenShotBuffer,
