@@ -1,11 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { Request, Response } from "express";
+import { errors } from "puppeteer";
 
 const puppeteer = require("puppeteer");
 
 @Injectable()
 export class GenerateScreenshotService {
-  getService = async (req: Request) => {
+  getService = async (req: Request, res: Response) => {
     const { html, styles } = req.body;
     const minimal_args = [
       "--autoplay-policy=user-gesture-required",
@@ -84,11 +85,12 @@ export class GenerateScreenshotService {
     await browser.close();
 
     if (screenShotBuffer) {
-      return JSON.stringify({
+      res.setHeader("Cache-Control", "s-maxage=600, stale-while-revalidate");
+      return res.json({
         buffer: screenShotBuffer,
       });
     } else {
-      return JSON.stringify({
+      return res.json({
         error: true,
       });
     }
