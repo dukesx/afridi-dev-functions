@@ -52,7 +52,7 @@ export class GenerateScreenshotService {
     });
 
     const page = await browser.newPage();
-    page.setViewport({ width: 1200, height: 600, deviceScaleFactor: 2 });
+    page.setViewport({ width: 1200, height: 600 });
     const loaded = page.waitForNavigation({
       waitUntil: "networkidle0",
     });
