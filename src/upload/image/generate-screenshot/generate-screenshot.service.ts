@@ -8,43 +8,7 @@ const puppeteer = require("puppeteer");
 export class GenerateScreenshotService {
   getService = async (req: Request, res: Response) => {
     const { html, styles } = req.body;
-    const minimal_args = [
-      "--autoplay-policy=user-gesture-required",
-      "--disable-background-networking",
-      "--disable-background-timer-throttling",
-      "--disable-backgrounding-occluded-windows",
-      "--disable-breakpad",
-      "--disable-client-side-phishing-detection",
-      "--disable-component-update",
-      "--disable-default-apps",
-      "--disable-dev-shm-usage",
-      "--disable-domain-reliability",
-      "--disable-extensions",
-      "--disable-features=AudioServiceOutOfProcess",
-      "--disable-hang-monitor",
-      "--disable-ipc-flooding-protection",
-      "--disable-notifications",
-      "--disable-offer-store-unmasked-wallet-cards",
-      "--disable-popup-blocking",
-      "--disable-print-preview",
-      "--disable-prompt-on-repost",
-      "--disable-renderer-backgrounding",
-      "--disable-setuid-sandbox",
-      "--disable-speech-api",
-      "--disable-sync",
-      "--hide-scrollbars",
-      "--ignore-gpu-blacklist",
-      "--metrics-recording-only",
-      "--mute-audio",
-      "--no-default-browser-check",
-      "--no-first-run",
-      "--no-pings",
-      "--no-sandbox",
-      "--no-zygote",
-      "--password-store=basic",
-      "--use-gl=swiftshader",
-      "--use-mock-keychain",
-    ];
+    const minimal_args = ["--no-sandbox"];
     const browser = await puppeteer.launch({
       headless: true,
       args: minimal_args,
@@ -54,7 +18,7 @@ export class GenerateScreenshotService {
     const page = await browser.newPage();
     page.setViewport({ width: 1200, height: 600 });
     const loaded = page.waitForNavigation({
-      waitUntil: "networkidle0",
+      waitUntil: "load",
     });
     await page.setContent(
       `<!DOCTYPE html>
@@ -85,7 +49,7 @@ export class GenerateScreenshotService {
     await browser.close();
 
     if (screenShotBuffer) {
-      res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
+      // res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
       return res.json({
         buffer: screenShotBuffer,
       });
