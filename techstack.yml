@@ -2,7 +2,7 @@ repo_name: dukesx/afridi-dev-functions
 report_id: fb1a4de89dcbf5f5e267a548982b12c3
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:51:27+00:00'
+timestamp: '2024-02-29T18:38:35+00:00'
 requested_by: dukesx
 provider: github
 branch: main
@@ -162,7 +162,7 @@ tools:
   last_updated_by: dukesx
   last_updated_on: 2022-08-13 07:15:45.000000000 Z
 - name: Prettier
-  description: 'Prettier is an opinionated code formatter. '
+  description: Prettier is an opinionated code formatter.
   website_url: https://prettier.io/
   version: 2.6.2
   license: MIT
@@ -176,7 +176,7 @@ tools:
   last_updated_by: dukesx
   last_updated_on: 2022-08-13 07:15:45.000000000 Z
 - name: SuperTest
-  description: 'A library for testing node.js HTTP servers '
+  description: A library for testing node.js HTTP servers
   website_url: https://www.npmjs.com/package/supertest
   version: 6.2.3
   license: MIT
